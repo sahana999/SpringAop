@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	  http://www.springframework.org/schema/beans/spring-beans.xsd">
+	  
+	  
+	  <bean id="carNewCar" class="com.example.demo.Car"  autowire="byType" 
+	          init-method="doInIt" destroy-method="doDestroy" scope="prototype">
+		<constructor-arg value="1403" name="carNumber"></constructor-arg>
+		<constructor-arg value="Honda-Car" name="carName"></constructor-arg>
+		<constructor-arg> <ref bean ="ee" /></constructor-arg>
+		<constructor-arg> <ref bean ="ms" /></constructor-arg>
+		<constructor-arg>
+			<list>
+					<ref bean="seat11"/>
+					<ref bean="seat2"/>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="capacity1" class="com.example.demo.Seat">
+			<constructor-arg value="2" name="capacity"></constructor-arg>
+			<constructor-arg value="Front" name="position"></constructor-arg>
+	</bean>
+	
+	<bean id="capacity2" class="com.example.demo.Seat">
+			<constructor-arg value="2" name="capacity"></constructor-arg>
+			<constructor-arg value="Rear" name="position"></constructor-arg>
+	</bean>
+
+	<!--   <bean id="carNewCar" class="com.example.demo.Car">
+		<constructor-arg value="Honda-Car" name="carName"></constructor-arg>
+		<constructor-arg value="123" name="carNumber"></constructor-arg>
+		
+		
+		
+	</bean>--> 
+	
+	
+
+<!--  other scope is singleton -->
+	<bean id="carNewCar2" class="com.example.demo.Car" autowire="byType" 
+	          init-method="doInIt" destroy-method="doDestroy" scope="singleton">  
+	          
+		<property name="carName" value="Creta"></property>
+		<property name="carNumber" value="245"></property>
+	</bean>
+	
+<bean id="ss" class="com.example.demo.Seat" autowire="byType">
+	<property name="seatno">
+	
+
+		<list>
+			<ref bean="seat1" />
+			<ref bean="seat2" />
+		</list>
+		</property>
+
+	</bean>
+
+<bean id="eee" class="com.example.demo.Engine">
+		<property name="engineName" value="TataEngine"></property>
+		<property name="power" value="1200"></property>
+	</bean>
+
+	<bean id="mssss" class="com.example.demo.MusicSystem">
+		<property name="name" value="Poineer" />
+	</bean>
+
+
+</beans>
